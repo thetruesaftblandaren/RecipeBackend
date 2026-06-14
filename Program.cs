@@ -1,14 +1,25 @@
 using RecipeBackend.Services;
 
+var AllowFrontendOrigin = "_allowFrontendOrigin";
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddHttpClient<ISitemapService, SitemapService>();
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: AllowFrontendOrigin,
+    builder =>
+    {
+        builder.WithOrigins("http://localhost:5173");
+    });
+});
+
 var app = builder.Build();
+
+app.UseCors(AllowFrontendOrigin);
 
 app.MapControllers();
 
