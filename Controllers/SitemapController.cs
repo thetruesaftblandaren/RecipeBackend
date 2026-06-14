@@ -14,7 +14,7 @@ public class SitemapController : Controller
         _service = service;
     }
 
-    [HttpGet]
+    [HttpGet("random-url")]
     public async Task<string> Index()
     {
         string url = await _service.GetRandomUrlAsync();
