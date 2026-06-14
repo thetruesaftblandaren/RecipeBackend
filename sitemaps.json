@@ -1,0 +1,10 @@
+[
+    {
+        "Url": "https://www.koket.se/sitemap.xml",
+        "Filter": null
+    },
+    {
+        "Url": "https://www.coop.se/sitemap_pages.xml",
+        "Filter": "recept"
+    }
+]
