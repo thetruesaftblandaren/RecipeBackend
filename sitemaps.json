@@ -1,18 +1,22 @@
 [
     {
         "Url": "https://www.koket.se/sitemap.xml",
-        "Filter": null
+        "Filter": null,
+        "RecipesOnly": false
     },
     {
         "Url": "https://www.coop.se/sitemap_pages.xml",
-        "Filter": "recept"
+        "Filter": "recept",
+        "RecipesOnly": true
     },
     {
         "Url": "https://www.ica.se/recept/sitemaps/recipes/1/",
-        "Filter": null
+        "Filter": null,
+        "RecipesOnly": true
     },
     {
         "Url": "https://www.ica.se/recept/sitemaps/recipes/2/",
-        "Filter": null
+        "Filter": null,
+        "RecipesOnly": true
     }
 ]
