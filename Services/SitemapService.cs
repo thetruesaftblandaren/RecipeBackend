@@ -8,7 +8,8 @@ public class SitemapService : ISitemapService
 {
     private readonly IConfiguration _config;
     private readonly HttpClient _httpClient;
-    private readonly List<SitemapConfig> _sitemaps;
+    private readonly List<SitemapConfig> _unfilteredSitemaps;
+    private readonly List<SitemapConfig> _filteredSitemaps;
 
     private Random random = new();
 
@@ -19,13 +20,22 @@ public class SitemapService : ISitemapService
         _httpClient.DefaultRequestHeaders.UserAgent.ParseAdd("RecipeBackend");
 
         string json = File.ReadAllText("sitemaps.json");
-        _sitemaps = JsonSerializer.Deserialize<List<SitemapConfig>>(json) ?? new List<SitemapConfig>();
+        _unfilteredSitemaps = JsonSerializer.Deserialize<List<SitemapConfig>>(json) ?? new List<SitemapConfig>();
+        _filteredSitemaps = _unfilteredSitemaps.Where(o => o.RecipesOnly == true).ToList();
     }
 
-    public async Task<string> GetRandomUrlAsync()
+    public async Task<string> GetRandomUrlAsync(bool allowUnfiltered)
     {
-        SitemapConfig sitemap = _sitemaps[random.Next(_sitemaps.Count())];
+        SitemapConfig sitemap;
 
+        if (allowUnfiltered)
+        {
+            sitemap = _unfilteredSitemaps[random.Next(_unfilteredSitemaps.Count())];
+        } else
+        {
+            sitemap = _filteredSitemaps[random.Next(_filteredSitemaps.Count())];
+        }
+        
         string sitemapStr = await _httpClient.GetStringAsync(sitemap.Url);
 
         XDocument doc = XDocument.Parse(sitemapStr);
