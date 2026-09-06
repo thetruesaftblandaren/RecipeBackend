@@ -1,3 +1,3 @@
 A simple API that looks through a sitemap, picks a random URL (sometimes based on filters), and returns the URL to the frontend. The frontend can be found at https://github.com/thetruesaftblandaren/RecipeFrontend.
 
-I can't guarantee that every link in the non-filtered list will be a recipe link, but the filtered links are more likely to be recipes, since those sitemaps are better at separating recipes and everything else on the website.
+I can't guarantee that every link in the filtered sitemaps will be recipe links, but the filtered links are more likely to be recipes, since those sitemaps are better at separating recipes and everything else on the website.
