@@ -1,3 +1,3 @@
-A simple API that looks through a sitemap, picks a random URL (sometimes based on filters), and returns the URL to the frontend.
+A simple API that looks through a sitemap, picks a random URL (sometimes based on filters), and returns the URL to the frontend. The frontend can be found at https://github.com/thetruesaftblandaren/RecipeFrontend.
 
-I haven't managed to filter all websites based on if they're recipes or just random articles. I'd either have to store their recipes somewhere, or look for specific elements in the metadata for those specific sites. May add this later.
+I can't guarantee that every link in the non-filtered list will be a recipe link, but the filtered links are more likely to be recipes, since those sitemaps are better at separating recipes and everything else on the website.
